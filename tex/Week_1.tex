@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{tabularray}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{codehigh}
+\usepackage[normalem]{ulem}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{siunitx}
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+\title{Session 1}
+\date{March 6, 2026}
+\author{Marco Tanzariello}
+
+\newcommand{\figpath}{../analysis/output/figures/}
+\newcommand{\tablepath}{../analysis/output/tables/}
+
+\begin{document}
+\maketitle
+\section*{Introduction}
+This report summarizes the data cleaning process and the empirical analysis of Airbnb listings in the Puglia region, aiming to understand the relationship between prices, review scores, accommodation capacity, and neighborhood characteristics.
+
+\section{Task 1: Basic data cleaning}
+The analysis started with the raw dataset of listings in Puglia. Numeric variables that arrived as strings were cleaned, currency symbols were removed, and listings with missing prices or ratings, those with less than 10 reviews, and those with prices above 500 euros were  filtered out. 
+There are 11,788 observations remaining after cleaning, which is less than 1/4 of the original sample.
+
+\section{Task 2: Descriptive statistics}
+Table \ref{tab:summary_stats} reports the summary statistics for our main variables. 
+Prices are right-skewed (median $<$ mean), and they have a high standard deviation. They cover a wide range (from 13 to 499). Reviews distribution is much more stable and informative, with data concentrated around 4.8 with a low standard deviation. The 'accommodates' variable have relatively big positive outliers, but both mean and median are around 4.
+
+\begin{table}[h!]
+    \centering
+    \caption{Summary Statistics (Price, Reviews, Accommodates)}
+    \label{tab:summary_stats}
+    \input{\tablepath/summary_stats.tex} 
+\end{table}
+
+\clearpage
+
+\section{Task 3: Price-review relationship}
+The sample was restricted to listings accommodating exactly two guests. Figure \ref{fig:price_hist} shows the distribution of prices, while Figure \ref{fig:scatter_rev} plots price against review scores. The calculated correlation coefficient confirms what is observed in the graph: there is a slightly positive correlation between prices and review scores.
+
+\begin{figure}[h!]
+    \centering
+    % Inserisci il nome esatto con cui hai salvato l'istogramma (es. histogram.pdf)
+    \includegraphics[width=0.7\textwidth]{\figpath/price_histogram.pdf}
+    \caption{Histogram of Prices (Accommodates = 2)}
+    \label{fig:price_hist}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    % Inserisci il nome esatto con cui hai salvato lo scatterplot recensioni/prezzo
+    \includegraphics[width=0.7\textwidth]{\figpath/scatter_price_rev.pdf}
+    \caption{Scatter plot of Price vs. Review Scores}
+    \label{fig:scatter_rev}
+\end{figure}
+
+\clearpage
+
+\section{Task 4: Neighborhood heterogeneity}
+Figure \ref{fig:neigh} displays the average price across different neighborhoods. 
+The cheapest neighbourhood is Foggia. This could be explained by the city's reputation, as it is often associated with higher crime rates and lower urban maintenance. On the other hand, the most expensive is Alberobello, a very well-known and highly demanded tourist destination.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{\figpath/neigh_plot.pdf}
+    \caption{Average Price by Neighborhood}
+    \label{fig:neigh}
+\end{figure}
+
+\clearpage
+
+\section{Task 5: Simple regression analysis}
+Filtering the sample for listings accommodating up to 6 guests, simple linear regressions were estimated. 
+Regressing price on review scores, the slope is 57.43. Keeping other factors constant, a 1-point increase in review score is associated with a 57.43 euros increase in price. Regressing price on accommodates, the slope is 12.53. Accommodating one more guest is associated with a 12.53 euros increase in price.
+
+When verifying the sample moment conditions for the latter regression, the difference between the actual mean and the predicted mean is very small, imputable to coefficient rounding. Manual calculations also verified manually that $TSS = ESS + RSS$.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{\figpath/scatter_price_acc.pdf}
+    \caption{Scatter Plot of Price vs. Accommodates with Regression Line}
+    \label{fig:scatter_acc}
+\end{figure}
+
+\clearpage
+Table 2 reports three different specifications. 
+In the Level-Level model, for each one-unit unit guest capacity increase, price increases by 12.53 euros. In the Log-Level model, for each 1 unit guest capacity increase, price increases by 11.2\%. In the Log-Log model, for each 1\% increase in guest capacity, price increases by 0.368\%. 
+
+I would choose the Log-Level model as the most adequate. It has the highest $R^2$, and economically it is more likely that more guest capacity implies a percentage increase in price rather than an absolute value. 
+
+\input{\tablepath/models_3.tex}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{\figpath/scatter_models.pdf}
+    \caption{Fitted Values for Level-Level, Log-Level, and Log-Log Specifications}
+    \label{fig:models_scatter}
+\end{figure}
+
+As an alternative functional form, instead of treating the effect of an additional guest as constant, we could use a dummy variable for each number of accommodates (from 1 to 6) to capture non-linear, step-specific effects.
+
+\end{document}
