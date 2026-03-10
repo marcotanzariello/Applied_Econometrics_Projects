@@ -1,20 +1,8 @@
-install.packages("tidyverse")
-install.packages("ggplot2")
-install.packages("dplyr")
-install.packages("readr")
-install.packages("magrittr")
-install.packages("psych")
-
-
 library(tidyverse)
-library(ggplot2)
-library(dplyr)
-library(readr)
-library(magrittr)
+library(psych)
 listings_Puglia_cleaned = read_rds("../../build/output/listings_Puglia_cleaned.rds")
 
 #TASK 2
-library(psych)
 #create a subset with just the columns we need and then create the summary statistics table
 Var_stats = listings_Puglia_cleaned %>%
   select(price, review_scores_rating, accommodates)
@@ -34,29 +22,34 @@ writeLines(tabella_tex, "../output/tables/summary_stats.tex")
 
 
 #TASK 3
-library(ggplot2)
 #select accomodates = 2
 listings_acc2 = listings_Puglia_cleaned %>%
   filter(accommodates == 2)
 
 #create price histogram
 price_histogram = ggplot(listings_acc2, aes(x = price)) +
-  geom_histogram(binwidth =10,
+  geom_histogram(binwidth = 10,
                  colour = "white",
                  fill = "steelblue") +
-  labs(x = "Price",
+  labs(x = "Price (€)",
        y = "Frequency",
        title = "Price Histogram") +
+  theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 price_histogram
 ggsave("price_histogram.pdf", path = "../output/figures/", width = 7, height = 5)
 
 #create scatter plot of price against review scores
 scatter_price_rev = ggplot(listings_acc2, aes(x = review_scores_rating, y = price)) +
-  geom_point(colour = "steelblue") +
+  geom_point(colour = "steelblue",
+             alpha = 0.3) +
+  geom_smooth(method = "lm",
+              colour = "red",
+              se = TRUE) +
   labs(x = "Review Scores",
-       y = "Price",
+       y = "Price (€)",
        title = "Price Against Reviews Scatter Plot") +
+  theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 scatter_price_rev
 ggsave("scatter_price_rev.pdf", path = "../output/figures/", width = 7, height = 5)
@@ -84,12 +77,13 @@ neigh_plot = neigh_clean %>%
                         breaks = c(5, 50, 100, 200, 500),
                         limits = c(5, 550),
                         range = c(2,10)) +
-  labs(x = "Average Price",
+  labs(x = "Average Price (€)",
        y = "Neighbourhood",
        title = "Average price per neighbourhood") +
+  theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
         axis.text.y = element_text(size = 8, face = "bold"),
-        panel.grid.major.y = element_line(colour = "grey", size = 0.2),
+        panel.grid.major.y = element_line(colour = "grey", linewidth = 0.2),
         panel.grid.major.x = element_blank(),
         panel.grid.minor = element_blank())
 neigh_plot
@@ -128,21 +122,22 @@ mean_acc6 = mean(listings_acc6$accommodates)
 scatter_price_acc = listings_acc6 %>%
   ggplot(aes(x = accommodates, y = price)) +
   geom_point(colour = "steelblue",
-             alpha = 0.6) +
+             alpha = 0.3) +
   geom_smooth(method = "lm",
               colour = "red") +
   geom_vline(xintercept = mean_acc6,
              linetype = "dashed",
-             size = 0.8) +
+             linewidth = 0.8) +
   geom_hline(yintercept = y_pred,
              linetype = "dashed",
-             size = 0.8) +
+             linewidth = 0.8) +
   labs(x = "Accommodates",
-       y = "Price",
+       y = "Price (€)",
        title = "Scatter Plot Price vs Accommodates") +
+  theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 scatter_price_acc
-ggsave("scatter_price_acc.pdf", path = "../output/figures/", width = 5, height = 3)
+ggsave("scatter_price_acc.pdf", path = "../output/figures/", width = 7, height = 5)
 #computing TSS, RSS, ESS
 TSS = sum((listings_acc6$price - mean(listings_acc6$price))^2)
 RSS = sum(reg_price_acc$residuals^2)
@@ -195,7 +190,7 @@ fitted_lines$log_log = exp(predict(log_log,
 scatter_models = listings_acc6 %>%
   ggplot(aes(x = accommodates, y = price)) +
   geom_point(colour = "steelblue",
-             alpha = 0.6) +
+             alpha = 0.3) +
   geom_point(data = means_foracc,
              aes(y = mean_price),
              colour = "black",
@@ -205,21 +200,23 @@ scatter_models = listings_acc6 %>%
   geom_line(data = fitted_lines,
             aes(x = accommodates, y = level_level,
                 colour = "Level-Level"),
-            size = 1.2) +
+            linewidth = 1.2) +
   geom_line(data = fitted_lines,
             aes(x = accommodates, y = log_level,
                 colour = "Log-Level"),
-            size = 1.2) +
+            linewidth = 1.2) +
   geom_line(data = fitted_lines,
             aes(x = accommodates, y = log_log,
                 colour = "Log-Log"),
-            size = 1.2) +
-  scale_color_manual(values = c("Level-Level" = "red",
+            linewidth = 1.2) +
+  scale_color_manual(name = "Three Models",
+                     values = c("Level-Level" = "red",
                                 "Log-Level" = "green",
                                 "Log-Log" = "purple")) +
   labs(x = "Accommodates",
-       y = "Price",
+       y = "Price (€)",
        title = "Scatter Plot Three Models") +
+  theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 scatter_models
 ggsave("scatter_models.pdf", path = "../output/figures/", width = 7, height = 5)

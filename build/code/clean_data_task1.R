@@ -1,7 +1,7 @@
 install.packages("tidyverse")
 library(tidyverse)
 
-listings_Puglia = read.csv("D:\\Desktop\\Econometrics Task Week 1\\build\\input\\listings_Puglia.csv")
+listings_Puglia = read.csv("../input/listings_Puglia.csv")
 #check classes
 class(listings_Puglia$price)
 class(listings_Puglia$review_scores_rating)
@@ -21,4 +21,4 @@ listings_Puglia_cleaned =
 nrow(listings_Puglia_cleaned)
 #There are 11788 observations after we cleaned, less than 1/4 of the original
 
-saveRDS(listings_Puglia_cleaned, "D:\\Desktop\\Econometrics Task Week 1\\build\\output\\listings_Puglia_cleaned.rds")
+saveRDS(listings_Puglia_cleaned, "../output/listings_Puglia_cleaned.rds")
