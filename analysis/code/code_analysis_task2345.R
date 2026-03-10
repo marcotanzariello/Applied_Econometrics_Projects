@@ -209,7 +209,7 @@ scatter_models = listings_acc6 %>%
             aes(x = accommodates, y = log_log,
                 colour = "Log-Log"),
             linewidth = 1.2) +
-  scale_color_manual(name = "Model Specification",
+  scale_color_manual(name = "Three Models",
                      values = c("Level-Level" = "red",
                                 "Log-Level" = "green",
                                 "Log-Log" = "purple")) +
