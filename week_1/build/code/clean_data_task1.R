@@ -1,4 +1,3 @@
-install.packages("tidyverse")
 library(tidyverse)
 
 listings_Puglia = read.csv("../input/listings_Puglia.csv")
