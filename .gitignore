@@ -50,3 +50,18 @@ rsconnect/
 
 #graphs and tables
 analysis/output
+
+# Rcpp generated files
+src/*.o
+src/*.so
+src/*.dll
+src/*.dylib
+
+# Agent help
+CLAUDE.md
+
+#.Rbuildignore
+.Rbuildignore
+
+#.Rproj
+*.Rproj

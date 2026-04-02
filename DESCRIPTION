@@ -3,6 +3,7 @@ Title: Applied Econometrics Tasks
 Version: 0.1.0
 Description: This repository contains tasks for the Applied Econometrics course.
 Imports:
+    here,
     tidyverse,
     psych,
     knitr,

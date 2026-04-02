@@ -1,0 +1,44 @@
+
+METODOLOGIA
+
+Le valutazioni sono state assegnate incrociando quattro fattori principali:
+
+1. Coolness:
+- Presenza di nightlife (discoteche, beach club, movida)
+- Target giovane (20-30 anni)
+- Eventi estivi e afflusso turistico giovanile
+Esempio: Gallipoli molto alto per movida intensa.
+
+2. Centrality:
+- Collegamenti ferroviari e stradali
+- Posizione geografica rispetto alle principali attrazioni pugliesi
+- Presenza di aeroporti o hub
+Esempio: Bari massimo punteggio per aeroporto e rete ferroviaria.
+
+3. Quietness:
+- Livello di rumore notturno
+- Densità turistica
+- Presenza di movida
+Esempio: Locorotondo molto alto perché estremamente tranquillo.
+
+4. Fanciness:
+- Qualità architettonica (centri storici, UNESCO, estetica)
+- Livello medio di ristoranti e boutique
+- Posizionamento percepito (lusso vs popolare)
+Esempio: Ostuni e Polignano molto alti.
+
+NOTE CHIAVE
+
+- Le località costiere turistiche tendono ad avere:
+  alta coolness ma bassa quietness (Gallipoli, Porto Cesareo)
+
+- I borghi della Valle d’Itria:
+  alta fanciness e quietness (Locorotondo, Cisternino)
+
+- Le città grandi:
+  alta centrality ma meno quietness (Bari, Taranto)
+
+- Le destinazioni premium:
+  combinano fanciness e turismo internazionale (Ostuni, Polignano)
+
+Le valutazioni sono relative tra le località pugliesi, non assolute a livello globale.

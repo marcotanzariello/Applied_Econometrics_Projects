@@ -1,0 +1,22 @@
+Ho una lista di località estratte da Airbnb che hanno più di 100 osservazioni. Effettua una ricerca approfondita su ognuna di queste, il tuo obiettivo è di assegnare a ciascuna località un punteggio da 1 a 10 (parti da numeri interi, utilizza i decimali se li ritieni più precisi) in 4 diverse categorie.
+Le località sono: 
+"Alberobello"       "Bari"             
+"Brindisi"          "Carovigno"        
+"Castellana Grotte" "Ceglie Messapica" 
+"Cisternino"        "Fasano"           
+"Gallipoli"         "Lecce"            
+"Locorotondo"       "Martina Franca"   
+"Melendugno"        "Monopoli"         
+"Nard"              "Ostuni"           
+"Otranto"           "Peschici"         
+"Polignano a Mare"  "Porto Cesareo"    
+"Salve"             "Taranto"          
+"Trani"             "Vieste"
+
+Assegna un punteggio per ognuna di queste 4 categorie:
+1. Coolness: attrattività per la fascia 20-30 anni e vivacità della vita notturna.
+2. Centrality: importanza della località come hub logistico o turistico e facilità di collegamento con le zone principali della Puglia.
+3. Quietness: livello di silenzio e tranquillità notturna (punteggio alto = molto silenzioso).
+4. Fanciness: prestigio della zona, eleganza dell'architettura e qualità dei negozi/ristoranti.
+
+Restituisci il risultato in formato RDS o csv. Crea anche un file di testo in cui spieghi il tuo ragionamento e come sei arrivato alle conclusioni consegnate.
