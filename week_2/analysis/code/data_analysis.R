@@ -1,6 +1,10 @@
 library(tidyverse)
 
+#Task 1
+
 listings_Puglia_week2_r = readRDS(here::here("week_2", "analysis", "input", "listings_Puglia_week2_cleaned.rds"))
+listings_Puglia_week2_r = listings_Puglia_week2_r %>%
+  mutate(neighbourhood_cleansed = stringi::stri_trans_general(neighbourhood_cleansed, "Latin-ASCII"))
 
 #estimate models log(price) ~ rating and log(price) ~ rating + accommodates
 logprice_rating = lm(log(price) ~ rating,
@@ -16,6 +20,8 @@ OVB = (beta_rating - beta_rating_accommodates) / beta_accommodates
 OVB
 
 #end of Task 1
+
+#Task 2
 
 #neighborhoods analysis
 neigh_agent = listings_Puglia_week2_r %>%
@@ -43,11 +49,11 @@ scores_wavg = scores_chatgpt %>%
          Fanciness_wavg = 0.25 * Fanciness_chatgpt + 0.25 * Fanciness_gemini + 0.5 * Fanciness) %>%
   select(Location, Coolness_wavg, Centrality_wavg, Quietness_wavg, Fanciness_wavg)
 
-listings_Puglia_final = listings_Puglia_week2_r %>%
-  filter(neighbourhood_cleansed %in% neigh_agent$neighbourhood_cleansed) %>%
-  left_join(scores_wavg, by = c("neighbourhood_cleansed" = "Location"))
+  listings_Puglia_final = listings_Puglia_week2_r %>%
+    filter(neighbourhood_cleansed %in% neigh_agent$neighbourhood_cleansed) %>%
+    left_join(scores_wavg, by = c("neighbourhood_cleansed" = "Location"))
 
-saveRDS(listings_Puglia_final, here::here("week_2", "analysis", "output", "datasets", "listings_Puglia_final.rds"))
+  saveRDS(listings_Puglia_final, here::here("week_2", "analysis", "output", "datasets", "listings_Puglia_final.rds"))
 
 #summary-stat table for neighborhoods variables
 summ_var = psych::describe(listings_Puglia_final %>% 
@@ -70,4 +76,128 @@ modelsummary::modelsummary(three_models,
                            statistic = "std.error",
                            output = here::here("week_2", "analysis", "output", "tables", "three_models.tex"))
 
-#interpretation of the table: 
+#interpretation of the table: We see that centrality and fanciness are the most significant variables, with 
+#a positive coefficient (+1 fanciness = +12.6% price, +1 centrality = +4% price). Quietness sign is negative, suggesting that quieter
+#neighborhoods are less expensive. Coolness is the strangest. It has a negative coefficient (+1 coolness = -11.1% price)
+#We can interpret this as the fact that cooler neighborhoods are more crowded, and therefore Airbnb hosts
+#will have to lower their prices to attract customers. We can check if there is a relationship between coolness and the number of listings in a neighborhood to confirm this hypothesis.
+coolness_nlistings = listings_Puglia_final %>%
+  group_by(neighbourhood_cleansed) %>%
+  summarise(n_listings = n(),
+            coolness = mean(Coolness_wavg)) %>%
+  ggplot(aes(x = coolness, y = n_listings)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Relationship between Coolness and Number of Listings",
+       x = "Coolness (weighted average)",
+       y = "Number of Listings")
+coolness_nlistings
+ggsave(here::here("week_2", "analysis", "output", "figures", "coolness_nlistings.png"), coolness_nlistings, width = 8, height = 6)
+
+#The plot shows a positive relationship between coolness and the number of listings, supporting our thesis
+#Rating coefficient went down, we can suggest that rating itself represents the positive and negative
+#aspects of the house, and if you add the single characteristics the value of the rating loses his role
+#The accommodates coefficient rose from 0.109 to 0.126. Guest capacity becomes more important when we control for the characteristics of the neighborhood.
+#R2 went up to 0.187, the model explain more of the variation in price. RMSE diminished, so we can affirm this is the best of the three models
+
+#end of Task 2
+
+#Task 3
+
+summary(model_final)
+
+#Obtain residuals and assess normality
+
+residuals_final = residuals(model_final)
+
+#esidual density plot with an overlaid normal density
+residuals_density = ggplot( data.frame(residuals_final), aes(x = residuals_final)) +
+  geom_density(fill = "steelblue", alpha = 0.5) +
+  stat_function(fun = dnorm, 
+                args = list(mean = mean(residuals_final), sd = sd(residuals_final)), 
+                color = "red", 
+                size = 1) +
+  labs(title = "Density of Residuals with Normal Overlay",
+       x = "Residuals",
+       y = "Density")
+residuals_density
+ggsave(here::here("week_2", "analysis", "output", "figures", "residuals_density.png"), residuals_density, width = 8, height = 6)
+
+#Jarque-Bera test
+jq_test = tseries::jarque.bera.test(residuals_final)
+jq_test
+
+#p value is less than 0.05, we reject the null hypothesis of normality.
+
+#For centrality, manually compute the following values for a two-sided t-test of H0 :
+# H0 : βcentrality = 0 vs. H1 : βcentrality ≠ 0:
+# (a) t-statistic,
+# (b) p-value,
+# (c) 5% critical value.
+beta_centrality = model_final$coefficients["Centrality_wavg"]
+sd_centrality = summary(model_final)$coefficients["Centrality_wavg", "Std. Error"]
+t_stat = beta_centrality / sd_centrality
+
+p = 2 * (1 - pt(abs(t_stat), df = model_final$df.residual))
+
+critical_value = qt(0.975, df = model_final$df.residual)
+
+#t_stat is 6.6654, p-value is 2.83e-11, critical value is 1.96. We reject the null hypothesis and conclude that centrality is a significant predictor of price.
+
+#Create a t-distribution figure showing rejection regions, critical values, and your test
+#statistic with vertical lines.
+
+t_dist_plot = ggplot(data.frame(x = seq(-10, 10, length.out = 1000)), aes(x = x)) +
+  stat_function(fun = dt, args = list(df = model_final$df.residual), color = "blue") +
+  geom_vline(xintercept = c(-critical_value, critical_value), color = "red", linetype = "dashed") +
+  geom_vline(xintercept = t_stat, color = "green", linetype = "dashed") +
+  labs(title = "t-Distribution with Rejection Regions and Test Statistic",
+       x = "t-value",
+       y = "Density")
+t_dist_plot
+ggsave(here::here("week_2", "analysis", "output", "figures", "t_dist_plot.png"), t_dist_plot, width = 8, height = 6)
+
+#end of Task 3
+
+#Task 4
+
+#manually compute the 95% confidence interval for the centrality coefficient
+lower_bound = beta_centrality - critical_value * sd_centrality
+upper_bound = beta_centrality + critical_value * sd_centrality
+conf_interval = c(lower_bound, upper_bound)
+conf_interval
+
+#figure with lower and upper bounds of the confidence interval, and the point estimate with vertical lines
+conf_interval_plot = ggplot() +
+  geom_vline(xintercept = beta_centrality, color = "green", linetype = "dashed") +
+  geom_vline(xintercept = conf_interval, color = "red", linetype = "dashed") +
+  xlim(beta_centrality - 3 * sd_centrality, beta_centrality + 3 * sd_centrality) +
+  labs(title = "95% Confidence Interval for Centrality Coefficient",
+       x = "Coefficient Value",
+       y = "")
+conf_interval_plot
+ggsave(here::here("week_2", "analysis", "output", "figures", "conf_interval_plot.png"), conf_interval_plot, width = 8, height = 6)
+
+#the t-test and the C.I both suggest that centrality is a significant predictor of price. C.I does not include zero, and the t-test rejects the null hypothesis of no effect. We can be confident that centrality has a positive effect on price.
+
+#recalculate model 2 with the cleaned datataser to run f test
+logprice_rating_accommodates_cleaned = lm(log(price) ~ rating + accommodates,
+                                  data = listings_Puglia_final)
+
+#joint f-test for the null hypothesis that the coefficients of the four neighborhood characteristics are all zero
+ssr_final = sum(residuals(model_final)^2) 
+ssr_logprice_rating_accommodates_cleaned = sum(residuals(logprice_rating_accommodates_cleaned)^2)
+
+f_stat = ((ssr_logprice_rating_accommodates_cleaned - ssr_final) / 4) / (ssr_final / (model_final$df.residual - 7))
+f_stat
+
+#p-value
+p_f = pf(f_stat, df1 = 4, df2 = model_final$df.residual - 7, lower.tail = FALSE)
+p_f
+
+
+#anova test
+anova_result = anova(logprice_rating_accommodates_cleaned, model_final)
+anova_result
+
+#Conclusion: neighborhood characteristics are jointly significant.
