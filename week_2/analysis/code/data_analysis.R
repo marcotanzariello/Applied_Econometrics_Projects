@@ -43,7 +43,7 @@ neigh_agent <- listings_week2 %>%
 # I used three different agents: ChatGPT, Gemini (thinking) and Perplexity (Deep Research). I will use a weighted average of the three agents' scores to create the final score for each neighborhood.
 # The weights are as follows: ChatGPT (0.25), Gemini (0.25) and Perplexity (0.5).
 # I gave more weight to Perplexity because I used the Deep Research function. I also asked all the agents to "explain" their process.
-# All the results are in analysis/input/agents. Scores as .csv and processes as .txt. The prompt was the same for all the agents. You can find it there as prompt.txt.
+# Score CSVs are stored in datasets/airbnb/neigh_scores/ (loaded via SCORES_DIR). Prompt and process notes remain in week_2/analysis/input/agents/.
 # Perplexity's process was also the most detailed and comprehensive, which is another reason why I gave it more weight.
 
 scores_chatgpt    <- read_csv(file.path(SCORES_DIR, paste0(tolower(REGION), "_scores_chatgpt.csv")))

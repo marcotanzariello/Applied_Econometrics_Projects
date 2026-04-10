@@ -1,5 +1,5 @@
 ---
-title: "Week 2 Report: Multiple Regression and Inference on Airbnb Listings in Puglia"
+title: "Week 2 Report: Multiple Regression and Inference on Airbnb Listings in `r REGION`"
 author: "Marco Tanzariello"
 date: "2026-03-13"
 format:
@@ -15,13 +15,30 @@ format:
       - \usepackage{float}
 ---
 
+```{r}
+#| label: setup-region
+#| include: false
+library(here)
+source(here::here("datasets", "airbnb", "_config_airbnb.R"))
+
+listings_week2_path <- file.path(DATA_PROC, paste0("listings_", tolower(REGION), "_week2.rds"))
+if (file.exists(listings_week2_path)) {
+  listings_week2 <- readRDS(listings_week2_path)
+  neigh <- stringi::stri_trans_general(listings_week2$neighbourhood_cleansed, "Latin-ASCII")
+  n_locations <- sum(table(neigh) > 100, na.rm = TRUE)
+} else {
+  n_locations <- NA_integer_
+}
+n_locations_text <- if (is.na(n_locations)) "multiple" else as.character(n_locations)
+```
+
 # Introduction {.unnumbered}
 
-This report extends the analysis from Week 1 by introducing multiple regression, neighborhood-level controls generated via AI agents, and formal inference (t-tests, confidence intervals, F-tests) on Airbnb listings in Puglia.
+This report extends the analysis from Week 1 by introducing multiple regression, neighborhood-level controls generated via AI agents, and formal inference (t-tests, confidence intervals, F-tests) on Airbnb listings in `r REGION`.
 
 # Task 1: Data preparation and baseline models
 
-Starting from the cleaned Puglia dataset, listings were filtered to those accommodating up to 6 guests. A standardized review score variable (*rating*, mean 0, sd 1) was created.
+Starting from the cleaned `r REGION` dataset, listings were filtered to those accommodating up to 6 guests. A standardized review score variable (*rating*, mean 0, sd 1) was created.
 
 Two baseline models were estimated:
 
@@ -32,14 +49,14 @@ The omitted-variable decomposition was performed by regressing *rating* on *acco
 
 # Task 2: Neighborhood controls and full model
 
-Only neighborhoods with at least 100 observations were retained (24 locations across Puglia). Four neighborhood characteristics were generated using AI agents:
+Only neighborhoods with at least 100 observations were retained (`r n_locations_text` locations across `r REGION`). Four neighborhood characteristics were generated using AI agents:
 
 - **Coolness**: attractiveness for the 20--30 age group and nightlife.
-- **Centrality**: logistic/touristic importance and connectivity within Puglia.
+- **Centrality**: logistic/touristic importance and connectivity within `r REGION`.
 - **Quietness**: night-time silence (higher = quieter).
 - **Fanciness**: prestige, architectural elegance, and shop/restaurant quality.
 
-Three AI agents were queried with the same prompt: ChatGPT, Gemini (thinking mode) and Perplexity (Deep Research). The final scores are a weighted average (ChatGPT 0.25, Gemini 0.25, Perplexity 0.50), giving more weight to Perplexity for its more detailed and comprehensive research process. All agent outputs (scores as `.csv`, reasoning as `.txt`) and the prompt are stored in `analysis/input/agents/`.
+Three AI agents were queried with the same prompt: ChatGPT, Gemini (thinking mode) and Perplexity (Deep Research). The final scores are a weighted average (ChatGPT 0.25, Gemini 0.25, Perplexity 0.50), giving more weight to Perplexity for its more detailed and comprehensive research process. Score CSVs are stored in `datasets/airbnb/neigh_scores/`, while prompt and reasoning documentation is stored in `week_2/analysis/input/agents/`.
 
 @tbl-summ-var reports the summary statistics for the four neighborhood variables.
 

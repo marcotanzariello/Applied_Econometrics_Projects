@@ -1,5 +1,5 @@
 ---
-title: "Week 1 Report: Data Cleaning and Empirical Analysis of Airbnb Listings in Puglia"
+title: "Week 1 Report: Data Cleaning and Empirical Analysis of Airbnb Listings in `r REGION`"
 author: "Marco Tanzariello"
 date: "2026-03-06"
 format:
@@ -16,13 +16,20 @@ format:
 ---
 
 
+```{r}
+#| label: setup-region
+#| include: false
+library(here)
+source(here::here("datasets", "airbnb", "_config_airbnb.R"))
+```
+
 # Introduction {.unnumbered}
 
-This report summarizes the data cleaning process and the empirical analysis of Airbnb listings in the Puglia region, aiming to understand the relationship between prices, review scores, accommodation capacity, and neighborhood characteristics.
+This report summarizes the data cleaning process and the empirical analysis of Airbnb listings in the `r REGION` region, aiming to understand the relationship between prices, review scores, accommodation capacity, and neighborhood characteristics.
 
 # Task 1: Basic data cleaning
 
-The analysis started with the raw dataset of listings in Puglia. Numeric variables that arrived as strings were cleaned, currency symbols were removed, and listings with missing prices or ratings, those with less than 10 reviews, and those with prices above 500 euros were filtered out. There are 11,788 observations remaining after cleaning, which is less than 1/4 of the original sample.
+The analysis started with the raw dataset of listings in `r REGION`. Numeric variables that arrived as strings were cleaned, currency symbols were removed, and listings with missing prices or ratings, those with less than 10 reviews, and those with prices above 500 euros were filtered out. There are 11,788 observations remaining after cleaning, which is less than 1/4 of the original sample.
 
 # Task 2: Descriptive statistics
 
