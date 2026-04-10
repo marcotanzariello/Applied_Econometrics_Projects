@@ -59,10 +59,10 @@ scores_wavg = scores_chatgpt %>%
 summ_var = psych::describe(listings_Puglia_final %>% 
                              select(Coolness_wavg, Centrality_wavg, Quietness_wavg, Fanciness_wavg))
 tabella_tex = knitr::kable(summ_var, 
-                     format = "latex", 
+                     format = "pipe", 
                      booktabs = TRUE, 
                      digits = 2)
-writeLines(tabella_tex, here::here("week_2", "analysis", "output", "tables", "summ_var.tex"))
+writeLines(tabella_tex, here::here("week_2", "analysis", "output", "tables", "summ_var.md"))
 
 #build a regression model with the new variables, then a regression table with the three models
 model_final = lm(log(price) ~ rating + accommodates + Coolness_wavg + Centrality_wavg + Quietness_wavg + Fanciness_wavg,
@@ -74,7 +74,7 @@ three_models = list("Log(price)-rating" = logprice_rating,
 modelsummary::modelsummary(three_models,
                            stars = TRUE,
                            statistic = "std.error",
-                           output = here::here("week_2", "analysis", "output", "tables", "three_models.tex"))
+                           output = here::here("week_2", "analysis", "output", "tables", "three_models.md"))
 
 #interpretation of the table: We see that centrality and fanciness are the most significant variables, with 
 #a positive coefficient (+1 fanciness = +12.6% price, +1 centrality = +4% price). Quietness sign is negative, suggesting that quieter

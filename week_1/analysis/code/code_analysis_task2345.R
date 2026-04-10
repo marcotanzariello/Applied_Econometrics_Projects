@@ -13,10 +13,10 @@ summ_stats = describe(Var_stats)[c("mean", "median", "sd", "min", "max", "n")]
 
 library(knitr)
 tabella_tex <- kable(summ_stats, 
-                     format = "latex", 
+                     format = "pipe", 
                      booktabs = TRUE, 
                      digits = 2)
-writeLines(tabella_tex, here::here("week_1", "analysis", "output", "tables", "summary_stats.tex"))
+writeLines(tabella_tex, here::here("week_1", "analysis", "output", "tables", "summary_stats.md"))
 
 
 
@@ -37,7 +37,7 @@ price_histogram = ggplot(listings_acc2, aes(x = price)) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 price_histogram
-ggsave(here::here("week_1", "analysis", "output", "figures", "price_histogram.pdf"), width = 7, height = 5)
+ggsave(here::here("week_1", "analysis", "output", "figures", "price_histogram.png"), width = 7, height = 5)
 
 #create scatter plot of price against review scores
 scatter_price_rev = ggplot(listings_acc2, aes(x = review_scores_rating, y = price)) +
@@ -52,7 +52,7 @@ scatter_price_rev = ggplot(listings_acc2, aes(x = review_scores_rating, y = pric
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 scatter_price_rev
-ggsave(here::here("week_1", "analysis", "output", "figures", "scatter_price_rev.pdf"), width = 7, height = 5)
+ggsave(here::here("week_1", "analysis", "output", "figures", "scatter_price_rev.png"), width = 7, height = 5)
 
 #correlation between prices and review scores
 corr_pr = cor(listings_acc2$price, listings_acc2$review_scores_rating)
@@ -87,7 +87,7 @@ neigh_plot = neigh_clean %>%
         panel.grid.major.x = element_blank(),
         panel.grid.minor = element_blank())
 neigh_plot
-ggsave(here::here("week_1", "analysis", "output", "figures", "neigh_plot.pdf"), width = 11, height = 8)
+ggsave(here::here("week_1", "analysis", "output", "figures", "neigh_plot.png"), width = 11, height = 8)
 #The cheapest neighbourhood is Foggia. This could be explained with the city's reputation. Foggia's known for high crime and low care of the city levels
 #The most expensive is Alberobello, a well known tourist destination.
 
@@ -137,7 +137,7 @@ scatter_price_acc = listings_acc6 %>%
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 scatter_price_acc
-ggsave(here::here("week_1", "analysis", "output", "figures", "scatter_price_acc.pdf"), width = 7, height = 5)
+ggsave(here::here("week_1", "analysis", "output", "figures", "scatter_price_acc.png"), width = 7, height = 5)
 #computing TSS, RSS, ESS
 TSS = sum((listings_acc6$price - mean(listings_acc6$price))^2)
 RSS = sum(reg_price_acc$residuals^2)
@@ -164,7 +164,7 @@ models_3 = list("Level-Level" = level_level,
 modelsummary(models_3,
              stars = TRUE,
              statistic = "std.error",
-             output = here::here("week_1", "analysis", "output", "tables", "models_3.tex"))
+             output = here::here("week_1", "analysis", "output", "tables", "models_3.md"))
 
 #In the Level-Level, for each 1 unit guest capacity increase, price increases by 12.533 euros
 #In the Log-Level, for each 1 unit guest capacity increase, price increases by 11.2%
@@ -219,5 +219,5 @@ scatter_models = listings_acc6 %>%
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
 scatter_models
-ggsave(here::here("week_1", "analysis", "output", "figures", "scatter_models.pdf"), width = 7, height = 5)
+ggsave(here::here("week_1", "analysis", "output", "figures", "scatter_models.png"), width = 7, height = 5)
 #We are now treating the effect of an additional guest as constant. We could use a model with a dummy variable for each number of accommodates (from 1 to 6), to capture specific effects for each step.
