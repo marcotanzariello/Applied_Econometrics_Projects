@@ -1,23 +1,32 @@
+# Script:  clean_data_task1.R
+# Purpose: Reads raw Airbnb listings, cleans price column, filters on price/reviews
+# Input:   datasets/airbnb/listings/listings_{REGION}.csv
+# Output:  datasets/airbnb/processed/listings_{region}_cleaned.rds
+
 library(tidyverse)
+source(here::here("datasets", "airbnb", "_config_airbnb.R"))
 
-listings_Puglia = read.csv(here::here("week_1", "build", "input", "listings_Puglia.csv"))
-#check classes
-class(listings_Puglia$price)
-class(listings_Puglia$review_scores_rating)
-class(listings_Puglia$accommodates)
-class(listings_Puglia$number_of_reviews)
+listings_raw <- read.csv(DATA_RAW)
 
-#clean price column
-listings_Puglia$price = parse_number(listings_Puglia$price)
+# check classes
+class(listings_raw$price)
+class(listings_raw$review_scores_rating)
+class(listings_raw$accommodates)
+class(listings_raw$number_of_reviews)
 
-class(listings_Puglia$price)
-#create filtered dataset
-listings_Puglia_cleaned = 
-  listings_Puglia %>%
+# clean price column
+listings_raw$price <- parse_number(listings_raw$price)
+
+class(listings_raw$price)
+
+# create filtered dataset
+listings_cleaned <-
+  listings_raw %>%
   filter(!is.na(price) & price < 500 &
            !is.na(review_scores_rating) &
            number_of_reviews >= 10)
-nrow(listings_Puglia_cleaned)
-#There are 11788 observations after we cleaned, less than 1/4 of the original
+nrow(listings_cleaned)
+# There are 11788 observations after we cleaned, less than 1/4 of the original
 
-saveRDS(listings_Puglia_cleaned, here::here("week_1", "build", "output", "listings_Puglia_cleaned.rds"))
+saveRDS(listings_cleaned,
+        file.path(DATA_PROC, paste0("listings_", tolower(REGION), "_cleaned.rds")))
