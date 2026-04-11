@@ -1,0 +1,77 @@
+Metodologia generale:
+
+I punteggi sono stati assegnati su scala 1–10 combinando: presenza di bar/club e target 20–30 anni (coolness), ruolo come hub logistico-turistico e collegamenti (centrality), percezione di rumore/affollamento notturno vs atmosfera raccolta (quietness), prestigio percepito, qualità dell'architettura storica e della ristorazione/shopping (fanciness). I valori derivano da guide turistiche aggiornate, articoli su movida e descrizioni ufficiali delle località, pesando soprattutto la stagione estiva.
+
+Dettagli per località (riassunto qualitativo):
+
+Alberobello:
+Località iconica della Valle d'Itria con trulli illuminati e qualche bar e ristorante serale, ma più orientata al turismo diurno che alla club culture; per questo la coolness è media. La posizione è utile per esplorare la Valle d'Itria, ma non è un vero nodo di trasporti, quindi centrality intermedia. Di notte, al netto dell'afflusso estivo, resta piuttosto tranquilla, mentre il patrimonio UNESCO e le strutture in trullo giustificano un punteggio alto in fanciness.
+
+Bari:
+Capoluogo regionale, principale porta d'accesso alla Puglia (aeroporto, porto, stazione) e descritto come città “buzzing” con una vasta scelta di club, pub e locali sia nel centro storico sia sul lungomare; da qui coolness e centrality molto alti. L'intensa vita notturna e il traffico urbano riducono il punteggio di quietness. La componente estetica è mista tra quartieri eleganti e zone più popolari, portando a una fanciness medio‑alta.
+
+Brindisi:
+Città portuale con aeroporto del Salento, capolinea della Via Appia e ben collegata al resto del territorio; è spesso consigliata come base logistica per nord Salento e Itria, quindi centrality elevata. Il lungomare con bar e caffè offre una nightlife interessante ma non estrema, perciò coolness medio‑buona. Il mix tra porto, traffico e quartieri residenziali porta a una quietness intermedia e a una fanciness discreta ma inferiore a centri più scenografici come Lecce o Ostuni.
+
+Carovigno:
+Piccolo centro bianco con castello e un litorale (Marina di Carovigno, Torre Santa Sabina) noto per spiagge Bandiera Blu e per essere punto di ritrovo serale estivo, descritto come molto vivo in alta stagione; questo dà una coolness sopra la media ma non da grande città. Geograficamente è tra Valle d'Itria e Salento, vicino a Ostuni ma senza infrastrutture da hub, quindi centrality moderata. Il borgo collinare rimane piuttosto calmo di notte, mentre l’insieme di centro storico curato, ceramiche e ristorazione di livello sostiene una buona fanciness.
+
+Castellana Grotte:
+Località conosciuta soprattutto per le grotte e per un centro storico silenzioso e dal ritmo lento. I bar e pub sono pochi e con offerta limitata, quindi coolness relativamente bassa. È però ben posizionata per raggiungere Monopoli, Polignano, Alberobello e Locorotondo, motivo di un punteggio discreto in centrality. La forte sensazione di quiete nel centro storico supporta un valore alto di quietness, mentre l’aspetto estetico è piacevole ma meno iconico di altri borghi bianchi, per cui fanciness medio‑alta.
+
+Ceglie Messapica:
+Definita cuore gastronomico della Puglia, con ristoranti eleganti in edifici in pietra e un centro storico autentico; questo giustifica un punteggio alto in fanciness e buono in coolness orientata più a food‑ies che a discoteche. È situata tra Ionio e Adriatico e considerata una buona base per esplorare entrambe le coste, per cui centrality medio‑alta. Il carattere raccolto del borgo e la prevalenza di serate eno‑gastronomiche anziché grandi club portano a una quietness relativamente elevata.
+
+Cisternino:
+Borgo bianco premiato tra i “Borghi più belli d’Italia”, noto per i fornelli pronti, ristoranti e bar moderni con atmosfera vivace la sera; la coolness è quindi alta per un centro di piccole dimensioni. La posizione nel cuore della Valle d'Itria lo rende una buona base, ma non un hub di trasporti, quindi centrality medio‑alta. Le serate estive possono essere animate nelle piazze, ma nel complesso resta un paese tranquillo, con un alto livello di cura estetica e offerta gastronomica che sostiene un punteggio elevato in fanciness.
+
+Fasano:
+Cittadina situata tra costa adriatica e Valle d'Itria, nota per Zoosafari Fasanolandia e la vicinanza a località come Polignano, Monopoli e Ostuni; ciò le conferisce una buona centrality. La nightlife è presente ma più familiare che da clubbing estremo, perciò coolness medio‑buona. L’entroterra e le masserie circostanti mantengono un discreto livello di quietness, mentre la presenza di resort, masserie e ristorazione di livello porta a una fanciness buona ma non al top regionale.
+
+Gallipoli:
+Descritta esplicitamente come una delle destinazioni estive più richieste d'Italia per giovani in cerca di beach club, discoteche e feste con DJ internazionali, è uno degli epicentri della movida salentina; da qui il massimo punteggio in coolness. È ben collegata alla costa ionica ma non è un hub infrastrutturale regionale, quindi centrality solo buona. L'intensità della vita notturna riduce molto la quietness, mentre l'immagine di località modaiola con lidi esclusivi dà una fanciness alta ma leggermente inferiore alle città più eleganti.
+
+Lecce:
+Capoluogo del Salento, “Firenze del Sud” per eleganza barocca, con centro storico fitto di ristoranti, wine bar e locali, e una forte cultura dell’aperitivo serale; questo porta a coolness molto alta. È un grande nodo di collegamenti per il Salento, con ruolo di hub viario e ferroviario, giustificando un punteggio alto in centrality. La vivacità serale e il turismo riducono la quietness, mentre l’uniformità barocca, le facciate in pietra leccese e i negozi/caffè di design spiegano un valore di fanciness tra i più alti della lista.
+
+Locorotondo:
+Piccolo borgo bianco collinare, famoso per le cummerse, le viste sui vigneti e le degustazioni di vino, con wine bar e festival ma un’atmosfera più rilassata che festaiola; quindi coolness medio‑alta. È in posizione centrale nella Valle d'Itria, vicino ad Alberobello, Martina Franca e Cisternino, il che giustifica una buona centrality. L’aria di paese tranquillo, con ritmi lenti e vicoli pedonali, dà un punteggio alto in quietness e una fanciness elevata grazie alla cura estetica e alla produzione vinicola DOC.
+
+Martina Franca:
+Maggiore centro della Valle d'Itria, con importante patrimonio barocco, numerosi ristoranti e vari cocktail bar; ciò sostiene una coolness buona, più da città elegante che da meta di clubbing estremo. La posizione quasi a metà tra Ionio e Adriatico e il ruolo di centro principale della valle portano a una centrality alta. Come città ha traffico e movimento, quindi quietness media, bilanciata però da un centro storico scenografico con palazzi e chiese che spingono la fanciness su valori elevati.
+
+Melendugno:
+Comune costiero le cui marine (San Foca, Roca, Torre dell'Orso, Sant'Andrea) sono descritte come uno degli epicentri dell’estate salentina, con sagre, concerti e una movida vivace soprattutto tra i giovani; di conseguenza coolness alta. Dal punto di vista logistico è ben posizionato sulla costa adriatica ma lontano dai principali hub, quindi centrality media. L’intenso afflusso estivo abbassa la quietness, mentre la bellezza delle spiagge e dei faraglioni conferisce una fanciness buona ma non di tipo urbano‑barocco.
+
+Monopoli:
+Città costiera con centro storico sul mare e numerosi bar, pub e locali sia nei vicoli sia sul porto, spesso descritta come molto vivace la sera; questo giustifica una coolness alta. Situata tra Bari e Brindisi, con facile accesso sia verso nord sia verso sud, ha una centrality elevata. L’area del centro storico e del porto è piuttosto animata la notte, con quietness media, mentre la combinazione di palazzi affacciati sul mare, ristoranti curati e lidi eleganti porta a una fanciness alta.
+
+Nardò:
+Cittadina salentina barocca poco turistica rispetto a Gallipoli o Lecce, descritta come paradiso gourmet e base tranquilla vicino al mare e al parco di Porto Selvaggio; questo dà una coolness medio‑alta ma meno “party”. La posizione è buona per esplorare la costa ionica, ma non è un nodo di trasporti, quindi centrality medio‑alta. L’accento sulla tranquillità rispetto al caos balneare estivo sostiene un punteggio molto alto di quietness, mentre l’architettura storica e boutique locali giustificano una fanciness elevata.
+
+Ostuni:
+La “Città Bianca” è estremamente scenografica, con vicoli animati da bar, locali come Riccardo Caffè e terrazze panoramiche che creano serate vivaci, quindi coolness alta. È facilmente raggiungibile da Bari e Brindisi e ben posizionata per esplorare la Valle d'Itria e la costa, motivo di centrality elevata. Il centro storico in alta stagione è affollato fino a tardi, riducendo la quietness, mentre l’impatto visivo, la fama internazionale e i locali curati portano a un punteggio di fanciness molto alto.
+
+Otranto:
+Località simbolo del Salento adriatico, con centro storico sul mare, numerosi bar e locali e beach club come Bahia e altre strutture che diventano discoteche sulla sabbia; le guide la descrivono con vita notturna animata per tutti i gusti, da qui una coolness molto alta. È un ottimo punto base per l’Adriatico salentino ma periferico rispetto agli hub, quindi centrality buona ma non massima. L’intensità della movida estiva abbassa la quietness, mentre la combinazione di borgo storico sul mare e locali fashion giustifica una fanciness elevata.
+
+Peschici:
+Borgo del Gargano affacciato su un promontorio, con centro storico bianco, mercatini notturni e alcune discoteche e locali che attirano giovani, pur restando a scala contenuta; coolness medio‑alta. È però abbastanza periferico rispetto al resto della Puglia, con centrality medio‑bassa. La stagione estiva porta molta gente, ma al di fuori dei picchi l’atmosfera è quella di un paese tranquillo, quindi quietness medio‑alta, con una fanciness buona grazie al contesto paesaggistico ma meno chic di altre mete.
+
+Polignano a Mare:
+Cittadina a picco sul mare, estremamente fotografata e con numerosi wine bar, cocktail bar e locali culturali; viene spesso indicata come ottima base per serate eleganti piuttosto che per clubbing estremo, perciò coolness alta. È situata in posizione strategica lungo la costa adriatica tra Bari, Monopoli e la Valle d'Itria, con buona centrality. Il centro è molto frequentato di sera, con quietness media, mentre la bellezza delle scogliere, la ristorazione di livello e i locali curati danno una fanciness tra le più alte.
+
+Porto Cesareo:
+Località ionica descritta come famosissima per la movida e molto gettonata dai giovani, con numerosi beach club (Bahia, Isola Beach, Tabù, ecc.) che di notte diventano discoteche a cielo aperto con DJ set; questo giustifica una coolness quasi massima. È ben posizionata per esplorare la costa ionica del Salento ma lontana dagli hub principali, quindi centrality buona ma non al top. L’intensità delle feste in spiaggia e delle serate riduce notevolmente la quietness, mentre la presenza di lidi chic e ristoranti sul mare sostiene una fanciness alta anche se più “beach‑club” che storico‑monumentale.
+
+Salve (Pescoluse):
+Il comune è noto soprattutto per la marina di Pescoluse, le “Maldive del Salento”, con spiagge Bandiera Blu, acqua cristallina e un mix di stabilimenti e tratti liberi; l’attrattività viene più dalla qualità del mare che dalla movida, per cui la coolness è buona ma inferiore a Gallipoli/Porto Cesareo. È però abbastanza decentrata rispetto ai principali centri e hub, quindi centrality bassa. Fuori dai lidi più strutturati l’atmosfera è molto rilassata e lontana dal rumore cittadino, con una quietness alta e una fanciness elevata legata al prestigio del tratto di costa.
+
+Taranto:
+Grande città portuale con numerosi bar, pub e una scena serale descritta come vivace ma più economica e meno caotica rispetto a Lecce; questo motiva una coolness alta ma non massima. È uno dei principali centri della regione e nodo portuale, quindi centrality elevata. L’ambiente urbano e industriale limita la quietness a valori medi, mentre il contrasto tra lungomare scenografico e zone segnate dalla storia industriale porta a una fanciness moderata rispetto ad altri centri turistici.
+
+Trani:
+Città costiera nota per il porto dominato dalla cattedrale sul mare e per locali eleganti sul molo e terrazze cocktail; la nightlife è descritta come rilassata e lenta piuttosto che sfrenata, da qui una coolness alta ma non estrema. È un buon punto di partenza per esplorare la costa nord barese ma non un hub primario, quindi centrality medio‑alta. Proprio l’assenza di movida eccessiva e l’atmosfera raccolta sul porto sostengono una quietness alta, mentre la scenografia del porto, i locali curati e l’architettura romanica giustificano un punteggio elevato di fanciness.
+
+Vieste:
+Meta iconica del Gargano, molto attrezzata turisticamente con spiagge, beach club e locali che attraggono famiglie, coppie e giovani in cerca sia di relax sia di divertimento notturno; questo le conferisce una coolness alta. Tuttavia è molto periferica rispetto al resto della Puglia, con centrality bassa. L’alta pressione turistica estiva limita la quietness, mentre il borgo bianco affacciato sul mare, il Pizzomunno e le spiagge Bandiera Blu sostengono una fanciness buona
