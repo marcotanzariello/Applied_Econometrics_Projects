@@ -1,6 +1,6 @@
-# _config_airbnb.R — parametri dataset Airbnb
-REGION     <- "Puglia"
-DATA_RAW   <- here::here("datasets", "airbnb", "listings",
-                          paste0("listings_", REGION, ".csv"))
-DATA_PROC  <- here::here("datasets", "airbnb", "processed")
-SCORES_DIR <- here::here("datasets", "airbnb", "neigh_scores")
+# _config_airbnb.R — parameters for the Airbnb dataset
+REGION        <- "Puglia"
+AIRBNB_RAW    <- here::here("datasets", "airbnb", "listings",
+                             paste0("listings_", REGION, ".csv"))
+AIRBNB_PROC   <- here::here("datasets", "airbnb", "processed")
+AIRBNB_SCORES <- here::here("datasets", "airbnb", "neigh_scores")

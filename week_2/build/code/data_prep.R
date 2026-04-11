@@ -7,9 +7,12 @@ library(tidyverse)
 source(here::here("datasets", "airbnb", "_config_airbnb.R"))
 
 # read cleaned dataset produced by week_1 build
-listings_base <- readRDS(
-  file.path(DATA_PROC, paste0("listings_", tolower(REGION), "_cleaned.rds"))
-)
+cleaned_path <- file.path(AIRBNB_PROC, paste0("listings_", tolower(REGION), "_cleaned.rds"))
+if (!file.exists(cleaned_path)) {
+  stop("Missing week_1 cleaned dataset for REGION='", REGION, "': ", cleaned_path,
+       "\nRun week_1/build/code/clean_data_task1.R first.")
+}
+listings_base <- readRDS(cleaned_path)
 
 # filter accommodates <= 6 and standardise rating
 listings_week2 <- listings_base %>%
@@ -19,5 +22,7 @@ listings_week2 <- listings_base %>%
 mean(listings_week2$rating)
 sd(listings_week2$rating)
 
-saveRDS(listings_week2,
-        file.path(DATA_PROC, paste0("listings_", tolower(REGION), "_week2.rds")))
+saveRDS(
+  listings_week2,
+  file.path(AIRBNB_PROC, paste0("listings_", tolower(REGION), "_week2.rds"))
+)

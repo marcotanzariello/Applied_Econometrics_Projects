@@ -6,7 +6,12 @@
 library(tidyverse)
 source(here::here("datasets", "airbnb", "_config_airbnb.R"))
 
-listings_raw <- read.csv(DATA_RAW)
+# fail fast if the raw CSV for the configured region is missing
+if (!file.exists(AIRBNB_RAW)) {
+  stop("Missing listings file for REGION='", REGION, "': ", AIRBNB_RAW)
+}
+
+listings_raw <- read.csv(AIRBNB_RAW)
 
 # check classes
 class(listings_raw$price)
@@ -23,10 +28,12 @@ class(listings_raw$price)
 listings_cleaned <-
   listings_raw %>%
   filter(!is.na(price) & price < 500 &
-           !is.na(review_scores_rating) &
-           number_of_reviews >= 10)
+    !is.na(review_scores_rating) &
+    number_of_reviews >= 10)
 nrow(listings_cleaned)
 # There are 11788 observations after we cleaned, less than 1/4 of the original
 
-saveRDS(listings_cleaned,
-        file.path(DATA_PROC, paste0("listings_", tolower(REGION), "_cleaned.rds")))
+saveRDS(
+  listings_cleaned,
+  file.path(AIRBNB_PROC, paste0("listings_", tolower(REGION), "_cleaned.rds"))
+)

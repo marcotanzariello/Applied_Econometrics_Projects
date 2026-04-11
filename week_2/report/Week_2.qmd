@@ -21,7 +21,7 @@ format:
 library(here)
 source(here::here("datasets", "airbnb", "_config_airbnb.R"))
 
-listings_week2_path <- file.path(DATA_PROC, paste0("listings_", tolower(REGION), "_week2.rds"))
+listings_week2_path <- file.path(AIRBNB_PROC, paste0("listings_", tolower(REGION), "_week2.rds"))
 if (file.exists(listings_week2_path)) {
   listings_week2 <- readRDS(listings_week2_path)
   neigh <- stringi::stri_trans_general(listings_week2$neighbourhood_cleansed, "Latin-ASCII")

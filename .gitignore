@@ -43,8 +43,8 @@ _freeze/
 .env.*
 
 # Generated/processed datasets (reproducible from scripts)
-datasets/*/processed/
-datasets/*/*/processed/
+datasets/*/processed/*.rds
+datasets/*/*/processed/*.rds
 
 # Quarto output
 week_*/report/*.html
@@ -53,3 +53,6 @@ week_*/report/*.pdf
 # Analysis output
 week_*/analysis/output/figures/*.png
 week_*/analysis/output/tables/*.md
+
+# example dataset
+neigh_ratings/
