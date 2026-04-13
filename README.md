@@ -44,7 +44,7 @@ YEAR_RANGE <- c(1982, 1988)
 ## AI scores automation
 
 In Week 2 some work is done through AI scores. I cannot automate the process without API.
-If you want to run the analysis on a different region, create the scores for the region of interest and put them in `datasets/airbnb/neigh_scores/` 
-The prompt used to realised my scores is given in `week_2/analysis/input/agents/`
+If you want to run the analysis on a different region, create the scores for the region of interest and put them in `datasets/airbnb/neigh_scores/`.
+The prompt used to realised my scores is given in `week_2/analysis/input/agents/`.
 You have to create three differents CSVs, one with Gemini, one with ChatGPT and one with Perplexity (research function).
 CSVs name have to be like the ones already present, just with a different region name.
