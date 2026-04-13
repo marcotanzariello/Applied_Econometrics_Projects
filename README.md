@@ -6,7 +6,7 @@ The work is divided in weekly tasks, everything's in tasks/, working on differen
 Current work:
 - **Airbnb listings** (weeks 1–2) 
 - **US state-year fatality panel** (week 3)
-- **Cigarettes SW dataset (week 4-5):
+- **Cigarettes SW dataset** (week 4-5):
 ---
 
 The work is still in progress. Configs or render may not be complete or stable yet.
