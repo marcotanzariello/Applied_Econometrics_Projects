@@ -21,12 +21,11 @@ summ_stats <- describe(Var_stats)[c("mean", "median", "sd", "min", "max", "n")]
 # Accomodates have relatively big positive outliers, but mean and median are both around 4
 
 library(knitr)
-tabella_tex <- kable(summ_stats,
+summary_stats <- kable(summ_stats,
   format = "pipe",
-  booktabs = TRUE,
   digits = 2
 )
-writeLines(tabella_tex, here::here("week_1", "analysis", "output", "tables", "summary_stats.md"))
+writeLines(summary_stats, here::here("week_1", "analysis", "output", "tables", "summary_stats.md"))
 
 
 # TASK 3

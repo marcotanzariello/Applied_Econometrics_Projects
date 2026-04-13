@@ -12,7 +12,7 @@ if (!file.exists(FATAL_RAW)) {
   stop("Missing fatality panel file: ", FATAL_RAW)
 }
 
-# load raw fatality panel data
+# 1.1 - load raw fatality panel data
 fatality_raw = read_dta(FATAL_RAW)
 
 # filter to configured year range
@@ -22,11 +22,11 @@ fatality = fatality_raw %>%
 # interpret stata labeled variables as factors
 fatality = as_factor(fatality)
 
-# panel dimensions
+# 1.2 - panel dimensions
 n_states = length(unique(fatality$state))
 n_years = length(unique(fatality$year))
 
-# declare panel data structure
+# 1.3 - declare panel data structure
 fatality_panel = pdata.frame(fatality, index = c("state", "year"))
 
 saveRDS(fatality_panel, file.path(FATAL_PROC, "fatality_panel.rds"))

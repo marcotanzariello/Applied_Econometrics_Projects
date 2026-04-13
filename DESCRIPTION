@@ -10,4 +10,5 @@ Imports:
     modelsummary,
     plm,
     psych,
-    tidyverse
+    tidyverse,
+    tseries
