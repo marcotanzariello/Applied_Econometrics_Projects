@@ -4,15 +4,20 @@ This repo contains my work for the Applied Econometrics Course (prof.Christoph A
 The work is divided in weekly tasks, everything's in tasks/, working on different datasets.
 
 Current work:
-- **Airbnb listings** (weeks 1–2) 
-- **US state-year fatality panel** (week 3)
-- **Cigarettes SW dataset** (week 4-5):
+- **Airbnb listings** (weeks 1–2): Data cleaning, Multiple Regression, F-test, Descriptive Analysis
+- **US state-year fatality panel** (week 3): TWFE, Pooled OLS, Clustered standard errors
+- **Cigarettes SW dataset** (week 4-5): *work in progress*
 ---
 
 The work is still in progress. Configs or render may not be complete or stable yet.
 
 
 ## Reproduce results
+
+Restore the R environment:
+```r
+renv::restore()
+```
 
 ```r
 source("run_all.R")          # runs the full pipeline
@@ -41,10 +46,13 @@ YEAR_RANGE <- c(1982, 1988)
 
 ---
 
-## AI scores automation
+## AI Neighbourhood Scoring (Week 2)
 
-In Week 2 some work is done through AI scores. I cannot automate the process without API.
-If you want to run the analysis on a different region, create the scores for the region of interest and put them in `datasets/airbnb/neigh_scores/`.
-The prompt used to realised my scores is given in `week_2/analysis/input/agents/`.
-You have to create three differents CSVs, one with Gemini, one with ChatGPT and one with Perplexity (research function).
-CSVs name have to be like the ones already present, just with a different region name.
+Week 2 uses LLM-generated neighbourhood quality scores (Coolness, Centrality, Quietness, Fanciness) as regressors in the hedonic pricing model.
+Scores are a weighted average across three LLMs:
+ChatGPT (0.25), Gemini (0.25), Perplexity Deep Research (0.5).
+
+To replicate on a different region:
+1. Use the prompt in `week_2/analysis/input/agents/`
+2. Generate three CSVs — one each from **Gemini**, **ChatGPT**, and **Perplexity**
+3. Place them in `datasets/airbnb/neigh_scores/` following the existing naming convention
