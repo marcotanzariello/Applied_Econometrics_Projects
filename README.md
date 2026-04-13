@@ -1,11 +1,16 @@
 # Applied Econometrics Projects
 
-Weekly exercises for the Applied Econometrics course, organized by week. Two datasets:
+This repo contains my work for the Applied Econometrics Course (prof.Christoph Albert). 
+The work is divided in weekly tasks, everything's in tasks/, working on different datasets.
 
-- **Airbnb listings** (weeks 1–2): price analysis, OLS regression, AI-generated neighbourhood scores
-- **US state-year fatality panel** (week 3+): panel data methods
-
+Current work:
+- **Airbnb listings** (weeks 1–2) 
+- **US state-year fatality panel** (week 3)
+- **Cigarettes SW dataset** (week 4-5):
 ---
+
+The work is still in progress. Configs or render may not be complete or stable yet.
+
 
 ## Reproduce results
 
@@ -36,21 +41,10 @@ YEAR_RANGE <- c(1982, 1988)
 
 ---
 
-## Structure
+## AI scores automation
 
-```
-datasets/
-  airbnb/         ← raw CSVs, config, AI neighbourhood scores
-  US_state_year/  ← fatality.dta panel + config
-week_N/
-  build/          ← data cleaning/prep scripts
-  analysis/       ← analysis scripts + output
-  report/         ← Quarto source
-run_all.R         ← full pipeline entry point
-```
-
----
-
-## AI neighbourhood scores (week 2)
-
-Neighbourhood-level scores (Coolness, Centrality, Quietness, Fanciness) averaged across three AI agents (ChatGPT 0.25, Gemini 0.25, Perplexity 0.50). CSVs in `datasets/airbnb/neigh_scores/`, prompt and methodology in `week_2/analysis/input/agents/`.
+In Week 2 some work is done through AI scores. I cannot automate the process without API.
+If you want to run the analysis on a different region, create the scores for the region of interest and put them in `datasets/airbnb/neigh_scores/`.
+The prompt used to realised my scores is given in `week_2/analysis/input/agents/`.
+You have to create three differents CSVs, one with Gemini, one with ChatGPT and one with Perplexity (research function).
+CSVs name have to be like the ones already present, just with a different region name.
