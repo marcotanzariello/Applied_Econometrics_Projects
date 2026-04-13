@@ -1,6 +1,6 @@
 library(tidyverse)
 library(fixest)
-source(here::here("datasets", "US_state_year", "_config_fatality.R"))
+source(here::here("datasets", "US_state_year","fatality", "_config_fatality.R"))
 
 fatality_panel <- read_rds(file.path(FATAL_PROC, "fatality_panel.rds"))
 

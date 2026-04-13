@@ -5,7 +5,7 @@
 library(tidyverse)
 library(haven)
 library(plm)
-source(here::here("datasets", "US_state_year", "_config_fatality.R"))
+source(here::here("datasets", "US_state_year", "fatality", "_config_fatality.R"))
 
 # fail fast if the raw Stata file is missing
 if (!file.exists(FATAL_RAW)) {
